@@ -1,0 +1,69 @@
+h2. title_helpers
+
+h3. Summary
+
+Rails plugin that provides controller and view methods to make displaying of
+window/page titles DRYer.
+
+h3. Rationale
+
+Most web sites you'll build have some sort of hierarchy. And most times this
+hierarchy will correspond to your controllers. For instance, let's say you have a
+support section on your website (@SupportController@), and under that you have FAQs
+about billing (the @billing@ action). Now, I think it's important for the window
+title to be informative -- in fact, it should come directly from the page hierarchy.
+So, going back to our billing FAQs page, you might want the window title to be
+"Foo.com - Support - Billing FAQs". But that's going to be a pattern, isn't it?
+"Foo.com - #{some controller} - #{some action}". You're not really going to define
+the full window title for every action in your code, are you? I'm certainly not going
+to. Wouldn't it be better if you could set the window title on a controller basis,
+and then, in your view, set the window title for just the action?
+
+h3. Example
+
+Controllers:
+
+<pre>
+<code>
+  class ApplicationController < ActionController::Base
+    window_title "My Site Name"
+  end
+  class SupportController < ApplicationController
+    window_title "Support"
+    def billing; end
+  end
+</code>
+</pre>
+
+Views:
+  
+<pre>
+<code>
+  #==== app/views/layouts/application.html.erb ====
+  <html>
+    <head><title><%= window_title %></title></head>
+    <body>
+      <h2><%= page_title %></h2>
+    </body>
+  </html>
+  #==== app/views/support/billing.html.erb ====
+  # this adds to the window title and the page title at the same time
+  <% title "Billing FAQs" %>
+</code>
+</pre>
+
+When the billing view is rendered:
+
+* The window title will be "My Site Name - Support - Billing FAQs"
+* The page title (in the &lt;h2&gt; tag) will be "Billing FAQs"
+
+h3. Installation
+
+<pre>
+  script/plugin install git://github.com/mcmire/title_helpers.git
+</pre>
+
+h3. Author
+
+(c) 2009 Elliot Winkler (elliot dot winkler at gmail dot com).
+Released under the MIT license.
