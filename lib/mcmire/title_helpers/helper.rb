@@ -6,10 +6,10 @@ module Mcmire
       # that should be put between the titles by passing <tt>:separator => " - "</tt>.
       def window_title(*args, &block)
         options = args.extract_options!
-        title = args.shift
+        titles = args.flatten
         @window_title ||= []
-        if title
-          @window_title << title
+        if titles.any?
+          @window_title += titles
         else
           options.reverse_merge!(:separator => " - ")
           @window_title.join(options[:separator])
@@ -28,9 +28,10 @@ module Mcmire
 
       # Call this in your view to set the window title and the page title at the same time.
       # See +window_title+ and +page_title+ for more.
-      def title(title)
-        window_title(title)
-        page_title(title)
+      def title(*titles)
+        titles = titles.flatten
+        window_title(*titles)
+        page_title(titles.first)
       end
     end
   end
