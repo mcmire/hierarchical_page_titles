@@ -5,6 +5,8 @@ module Mcmire
         base.extend(ClassMethods)
       end
       
+      include SharedMethods
+      
       module ClassMethods
         # Call this in the body of your controller with a string to add the string to
         # the window title before each action in your controller. This will work
@@ -12,7 +14,7 @@ module Mcmire
         # and also in a subcontroller, there will be two strings when you go to output
         # the window title. You can pass :only and :except to limit this to certain actions.
         def window_title(*args, &block)
-          options = args.extract_options!
+          options = Hash == args.last ? args.last : {}
           before_filter(options) {|c| c.window_title(*args, &block) }
         end
       
@@ -22,14 +24,14 @@ module Mcmire
         # also in a subcontroller, the subcontroller's title will override the supercontroller's.
         # You can pass :only and :except to limit this to certain actions.
         def page_title(*args, &block)
-          options = args.extract_options!
+          options = Hash == args.last ? args.last : {}
           before_filter(options) {|c| c.page_title(*args, &block) }
         end
       
         # Call this in the body of your controller to tell page_title to not show anything.
         # You can pass :only and :except to limit this to certain actions.
         def hide_page_title(*args, &block)
-          options = args.extract_options!
+          options = Hash == args.last ? args.last : {}
           before_filter(options) {|c| c.hide_page_title(*args, &block) }
         end
       
@@ -38,12 +40,10 @@ module Mcmire
         # See +window_title+ and +page_title+ for more.
         # You can pass :only and :except to limit this to certain actions.
         def title(*args, &block)
-          options = args.extract_options!
+          options = Hash == args.last ? args.last : {}
           before_filter(options) {|c| c.title(*args, &block) }
         end
       end
-      
-      include SharedMethods
     end
   end
 end
