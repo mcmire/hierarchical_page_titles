@@ -23,10 +23,7 @@ module Mcmire
       def page_title(*args)
         options = args.extract_options!
         if args.empty?
-          options[:wrapper] ||= "h2"
-          if !@_hide_page_title && !options[:force]
-            content_tag(options[:wrapper].to_sym, @_page_title)
-          end
+          @_page_title
         else
           super
         end
