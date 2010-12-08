@@ -103,13 +103,20 @@ When the billing view is rendered:
 
 ### How is it different from XYZ?
 
+There are several related gems/plugins:
 
+* **dynamic-page-title**: Provides options to `title` which are unnecessary. No support for hierarchical (controller-level) titles. Isn't compatible with Rails 3.
+* **entitled**: Interesting, but has totally different requirements.
+* **happy-titles**: The idea here is that you specify a template which I think is inflexible. No support for hierarchical titles, only supports two levels.
+* **headliner**: A good design for simple requirements, and compatible with Rails 3. Again, no support for hierarchy, though. Plus, the `t` shortcut conflicts with i18n, which is bad. Not a gem.
+* **page_title_helper**: Good if you need i18n, otherwise is a bit overkill. Again, no support for hierarchy, though.
+* **smart_titles**: Stupid simple, and provides i18n. Again, no support for hierarchy, though.
+* **title_helper**: Not sure, Github project seems to be missing.
+* [**title_helpers**](https://github.com/henrik/title_helpers): Supports a page prefix, but doesn't support full hierarchy. Plus, I don't really like the API, and it isn't a gem.
 
 ### How do I install it?
 
-<pre>
-  script/plugin install git://github.com/mcmire/title_helpers.git
-</pre>
+    gem install title_helpers
 
 ### How do I contribute?
 
