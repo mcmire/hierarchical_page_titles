@@ -1,0 +1,1 @@
+require 'hierarchical_page_titles/railtie'

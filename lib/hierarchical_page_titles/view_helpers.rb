@@ -1,6 +1,6 @@
-require 'title_helpers/shared_methods'
+require 'hierarchical_page_titles/shared_methods'
 
-module TitleHelpers
+module HierarchicalPageTitles
   module ViewHelpers
     include SharedMethods
     

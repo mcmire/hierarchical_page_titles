@@ -1,4 +1,4 @@
-module TitleHelpers
+module HierarchicalPageTitles
   module SharedMethods
     # Call this in your view with a string to add the string to the array of window titles.
     # Call this in your layout to output the window title. You can specify a separator

@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "title_helpers/version"
+require "hierarchical_page_titles/version"
 
 Gem::Specification.new do |s|
-  s.name        = "title_helpers"
-  s.version     = TitleHelpers::VERSION
+  s.name        = "hierarchical_page_titles"
+  s.version     = HierarchicalPageTitles::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Elliot Winkler"]
   s.email       = ["elliot.winkler@gmail.com"]
-  s.homepage    = "http://github.com/mcmire/title_helpers"
+  s.homepage    = "http://github.com/mcmire/hierarchical_page_titles"
   s.summary     = %q{A gem that provides controller and view methods to make displaying of window/page titles DRYer.}
   s.description = %q{A gem that provides controller and view methods to make displaying of window/page titles DRYer.}
 

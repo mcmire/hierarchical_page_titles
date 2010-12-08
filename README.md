@@ -1,4 +1,4 @@
-## title_helpers
+## hierarchical_page_titles
 
 ### What is this?
 
@@ -116,7 +116,7 @@ There are several related gems/plugins:
 
 ### How do I install it?
 
-    gem install title_helpers
+    gem install hierarchical_page_titles
 
 ### How do I contribute?
 

@@ -1,1 +1,0 @@
-require 'title_helpers/railtie'
