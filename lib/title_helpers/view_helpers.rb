@@ -29,5 +29,20 @@ module TitleHelpers
         super
       end
     end
+    
+    # TODO: Document
+    def window_title_set?
+      @_window_title_set
+    end
+    
+    # TODO: Document
+    def page_title_set?
+      @_window_title_set
+    end
+    
+    # TODO: Document
+    def title_set?
+      @_title_set
+    end
   end
 end
