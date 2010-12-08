@@ -31,6 +31,11 @@ module TitleHelpers
     end
     
     # TODO: Document
+    def page_title?
+      @_page_title.present?
+    end
+    
+    # TODO: Document
     def window_title_set?
       @_window_title_set
     end

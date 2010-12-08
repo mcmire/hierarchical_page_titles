@@ -27,13 +27,6 @@ module TitleHelpers
         before_filter(options) {|c| c.page_title(*args, &block) }
       end
       
-      # Call this in the body of your controller to tell page_title to not show anything.
-      # You can pass :only and :except to limit this to certain actions.
-      def hide_page_title(*args, &block)
-        options = Hash === args.last ? args.last : {}
-        before_filter(options) {|c| c.hide_page_title(*args, &block) }
-      end
-      
       # Call this in the body of your controller with a string to add it to the
       # window title AND set the page title at the same time.
       # See +window_title+ and +page_title+ for more.
@@ -41,6 +34,12 @@ module TitleHelpers
       def title(*args, &block)
         options = Hash === args.last ? args.last : {}
         before_filter(options) {|c| c.title(*args, &block) }
+      end
+      
+      # Call this in the body of your controller to tell page_title to not show anything.
+      # You can pass :only and :except to limit this to certain actions.
+      def hide_page_title(options={})
+        before_filter(options) {|c| c.page_title(nil) }
       end
     end
   end
