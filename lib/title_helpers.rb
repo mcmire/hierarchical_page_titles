@@ -1,1 +1,1 @@
-require 'railtie' if defined?(Rails)
+require 'title_helpers/railtie'
