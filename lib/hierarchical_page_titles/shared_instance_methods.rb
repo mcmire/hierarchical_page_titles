@@ -8,7 +8,7 @@ module HierarchicalPageTitles
       titles = args.flatten
       @_window_titles ||= []
       if block_given?
-        @_window_titles << block.call
+        @_window_titles << instance_eval(&block)
       else
         @_window_titles += titles
       end
@@ -20,7 +20,7 @@ module HierarchicalPageTitles
     def page_title(*args, &block)
       options = args.extract_options!
       title = args.first
-      @_page_title = (block_given? ? block.call : title)
+      @_page_title = (block_given? ? instance_eval(&block) : title)
       @_page_title_set = true
     end
     
