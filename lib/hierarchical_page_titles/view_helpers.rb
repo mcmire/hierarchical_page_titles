@@ -1,8 +1,8 @@
-require 'hierarchical_page_titles/shared_methods'
+require 'hierarchical_page_titles/shared_instance_methods'
 
 module HierarchicalPageTitles
   module ViewHelpers
-    include SharedMethods
+    include SharedInstanceMethods
     
     # Call this in your view with a string to add the string to the array of window titles.
     # Call this in your layout to output the window title. You can specify a separator

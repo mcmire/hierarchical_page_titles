@@ -1,10 +1,12 @@
-require 'hierarchical_page_titles/shared_methods'
+require 'hierarchical_page_titles/shared_instance_methods'
 
 module HierarchicalPageTitles
   module ControllerHelpers
-    extend ActiveSupport::Concern
+    def self.included(base)
+      base.extend(ClassMethods)
+    end
     
-    include SharedMethods
+    include SharedInstanceMethods
     
     module ClassMethods
       # Call this in the body of your controller with a string to add the string to
