@@ -16,6 +16,7 @@ module HierarchicalPageTitles
         options = Hash === args.last ? args.last : {}
         before_filter(options) {|c| c.window_title(*args, &block) }
       end
+      alias :add_window_title :window_title
       
       # Call this in the body of your controller with a string to set the page title
       # globally for each action in your controller. Unlike window_title, this will not
