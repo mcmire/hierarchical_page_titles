@@ -12,8 +12,7 @@ module HierarchicalPageTitles
       if args.empty?
         options[:separator] ||= " - "
         @_window_titles ||= []
-        prefix = Array(options[:prefix]) || []
-        (prefix + @_window_titles).join(options[:separator])
+        @_window_titles.join(options[:separator])
       else
         super
       end
