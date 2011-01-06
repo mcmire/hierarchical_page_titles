@@ -2,7 +2,7 @@
 
 ### What is this?
 
-This is a little gem that provides controller and view methods to make displaying of window/page titles DRYer.
+hierarchical_page_titles is a little gem that provides controller and view methods to make displaying of window/page titles DRYer. Currently, it's only compatible with Rails 3.
 
 ### Why did you make it?
 
@@ -12,9 +12,9 @@ I made it because I found that I was doing the same thing over and over in my Ra
 
 I'm going to walk through a few use cases and hopefully you'll get the idea.
 
-#### Window and page title are the same
+#### One
 
-Here's what your layout might look like:
+The simplest case is if every page in your site has a title, and you want the window title to reflect the page title. hierarchical_page_titles gives you two helpers, `window_title` and `page_title`, that you can use in your layout. So let's do that:
 
       <html>
         <head><title><%= window_title %></title></head>
@@ -24,12 +24,12 @@ Here's what your layout might look like:
         </body>
       </html>
 
-So in your view, you'd do this:
+Now in your view, you use `title` to set the title for that page:
 
       <% title "Some Page" %>
       <p>Some content</p>
-      
-And now when your layout is rendered, it will be this:
+
+And now you get this when the page is rendered:
 
       <html>
         <head><title>Some Page</title></head>
@@ -39,9 +39,9 @@ And now when your layout is rendered, it will be this:
         </body>
       </html>
 
-#### Window title with prefix
+#### Two
 
-Nothing special required here, just put it in your layout:
+What if you want the name of your site to show up in the window title? The easiest way is to just hard-code it in your layout:
 
       <html>
         <head><title>My Site - <%= window_title %></title></head>
@@ -51,7 +51,7 @@ Nothing special required here, just put it in your layout:
         </body>
       </html>
 
-And when the page is rendered:
+And this is what you get when a page is rendered:
 
       <html>
         <head><title>My Site - Some Page</title></head>
@@ -61,45 +61,39 @@ And when the page is rendered:
         </body>
       </html>
       
-#### Hiding page title for certain pages
+#### Three
 
-#### A page hierarchy
+What if there are some pages on your site in which you don't want to show a page title? Well, another helper hierarchical_page_titles gives you is `page_title?`, which will return true if the page title has been set. So let's say your layout looks like this:
 
-Controllers:
+    <html>
+      <head><title><%= window_title %></title></head>
+      <body>
+        <% if page_title? %>
+          <h1><%= page_title %></h1>
+        <% end %>
+        <%= yield %>
+      </body>
+    </html>
+    
+And you have a view in which you set the window title, but not the page title:
 
-<pre>
-<code>
-  class ApplicationController < ActionController::Base
-    window_title "My Site Name"
-  end
-  class SupportController < ApplicationController
-    window_title "Support"
-    def billing; end
-  end
-</code>
-</pre>
+    <% window_title "Some Page" %>
+    <p>Some content</p>
 
-Views:
-  
-<pre>
-<code>
-  #==== app/views/layouts/application.html.erb ====
-  <html>
-    <head><title><%= window_title %></title></head>
-    <body>
-      <h2><%= page_title %></h2>
-    </body>
-  </html>
-  #==== app/views/support/billing.html.erb ====
-  # this adds to the window title and the page title at the same time
-  <% title "Billing FAQs" %>
-</code>
-</pre>
+In this case your page will get rendered as follows:
 
-When the billing view is rendered:
+    <html>
+      <head><title>Some Page</title></head>
+      <body>
+        <p>Some content</p>
+      </body>
+    </html>
 
-* The window title will be "My Site Name - Support - Billing FAQs"
-* The page title (in the &lt;h2&gt; tag) will be "Billing FAQs"
+#### Four
+
+Let's combine the last two examples. That it, what happens if you want the 
+
+....
 
 ### How is it different from XYZ?
 
@@ -116,11 +110,18 @@ There are several related gems/plugins:
 
 ### How do I install it?
 
+Just the usual way:
+
     gem install hierarchical_page_titles
+
+### I found a bug! or, I have a feature request...
+
+Okay! Please file any issues in [Issues](http://github.com/mcmire/hierarchical_page_titles/issues).
 
 ### How do I contribute?
 
-### Who wrote this?
+Pull down the code, make a branch, and send me a pull request. 
 
-(c) 2009 Elliot Winkler (elliot dot winkler at gmail dot com).
-Released under the MIT license.
+### Author/Copyright/License
+
+(c) 2009-2011 Elliot Winkler (email: <elliot.winkler@gmail.com>, twitter: [@mcmire](http://twitter.com/mcmire)). You are free to do whatever you want with this code, as long as I'm not held responsible, blah blah.
