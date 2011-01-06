@@ -14,6 +14,7 @@ module HierarchicalPageTitles
         @_window_titles ||= []
         @_window_titles.join(options[:separator])
       else
+        @_window_title_set = true
         super
       end
     end
@@ -25,8 +26,14 @@ module HierarchicalPageTitles
       if args.empty?
         @_page_title
       else
+        @_page_title_set = true
         super
       end
+    end
+    
+    def title(*args)
+      @_title_set = true
+      super
     end
     
     # TODO: Document
@@ -41,7 +48,7 @@ module HierarchicalPageTitles
     
     # TODO: Document
     def page_title_set?
-      @_window_title_set
+      @_page_title_set
     end
     
     # TODO: Document

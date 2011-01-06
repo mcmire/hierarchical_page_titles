@@ -12,7 +12,6 @@ module HierarchicalPageTitles
       else
         @_window_titles += titles
       end
-      @_window_title_set = true
     end
     
     # Call this in your view with a string to set the page title to that string.
@@ -21,7 +20,6 @@ module HierarchicalPageTitles
       options = args.extract_options!
       title = args.first
       @_page_title = (block_given? ? instance_eval(&block) : title)
-      @_page_title_set = true
     end
     
     # Call this in your view to set the window title and the page title at the same time.
@@ -30,7 +28,6 @@ module HierarchicalPageTitles
       options = args.extract_options!
       window_title(*args, &block)
       page_title(args.last, &block)
-      @_title_set = true
     end
     
     def titles
