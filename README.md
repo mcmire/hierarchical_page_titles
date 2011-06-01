@@ -17,7 +17,7 @@ I'm going to walk through a few use cases and hopefully you'll get the idea.
 
 ### One
 
-The simplest case is if every page in your site has a title, and you want the window title to reflect the page title. hierarchical_page_titles gives you two helpers, `window_title` and `page_title`, that you can use in your layout. So let's do that:
+The simplest case is if every page in your site has a title, and you want the window title to reflect the page title. **hierarchical_page_titles** gives you two helpers, `window_title` and `page_title`, that you can use in your layout. So let's do that:
 
       <html>
         <head><title><%= window_title %></title></head>
@@ -108,14 +108,14 @@ In many Rails apps, you are working with resources, so your controller hierarchy
 
 You want to make sure that for every page, the window title reflects the current level of the hierarchy. For the pages within the "foos" resource, you *could* do something like this:
 
-index
-: `<% title "Foos" %>`
-new
-: `<% title "Foos", "New Foo" %>`
-edit
-: `<% title "Foos", "Edit Foo ##{foo.id}" %>`
-show
-: `<% title "Foos", "Foo ##{foo.id}" >`
+    index
+      <% title "Foos" %>
+    new
+      <% title "Foos", "New Foo" %>
+    edit
+      <% title "Foos", "Edit Foo ##{foo.id}" %>
+    show
+      <% title "Foos", "Foo ##{foo.id}" >
 
 This is okay, but it'd be nice if you didn't have to add "Foos" to every view. **hierarchical_page_titles** gives you a way to DRY this up too: a `title` helper in your controller. So your controller might look like this:
 
