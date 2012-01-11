@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{A gem that provides controller and view methods to make displaying of window/page titles DRYer.}
 
   #s.rubyforge_project = "title_helpers"
-  
+
   s.files         = ["README.md", "hierarchical_page_titles.gemspec"] + Dir["lib/**/*"]
   s.test_files    = Dir["{test,spec,features}/**/*"]
   s.executables   = Dir["bin/**/*"].map {|f| File.basename(f) }

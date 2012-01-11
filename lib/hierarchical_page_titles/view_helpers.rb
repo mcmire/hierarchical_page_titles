@@ -3,7 +3,7 @@ require 'hierarchical_page_titles/shared_instance_methods'
 module HierarchicalPageTitles
   module ViewHelpers
     include SharedInstanceMethods
-    
+
     # Call this in your view with a string to add the string to the array of window titles.
     # Call this in your layout to output the window title. You can specify a separator
     # that should be put between the titles by passing <tt>:separator => " - "</tt>.
@@ -18,7 +18,7 @@ module HierarchicalPageTitles
         super
       end
     end
-    
+
     # Call this in your view with a string to set the page title to that string.
     # Call this in your layout with no arguments to output the page title.
     def page_title(*args)
@@ -30,27 +30,27 @@ module HierarchicalPageTitles
         super
       end
     end
-    
+
     def title(*args)
       @_title_set = true
       super
     end
-    
+
     # TODO: Document
     def page_title?
       @_page_title.present?
     end
-    
+
     # TODO: Document
     def window_title_set?
       @_window_title_set
     end
-    
+
     # TODO: Document
     def page_title_set?
       @_page_title_set
     end
-    
+
     # TODO: Document
     def title_set?
       @_title_set
