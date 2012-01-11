@@ -1,3 +1,6 @@
 .DS_Store
-*.tmproj
 *.gem
+
+# vim
+*.vim*
+tags
