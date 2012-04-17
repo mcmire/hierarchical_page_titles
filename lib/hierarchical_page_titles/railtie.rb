@@ -8,10 +8,13 @@ module HierarchicalPageTitles
   }
 
   class Railtie < Rails::Railtie
-    # copied from formtastic
-    initializer "hierarchical_page_titles.initialize", :after => :after_initialize do
-      ActionController::Base.class_eval { include HierarchicalPageTitles::ControllerHelpers }
-      ActionView::Base.class_eval { include HierarchicalPageTitles::ViewHelpers }
+    ActiveSupport.on_load(:action_controller) do
+      include HierarchicalPageTitles::ControllerHelpers
+    end
+
+    ActiveSupport.on_load(:action_view) do
+      include HierarchicalPageTitles::ViewHelpers
+      # pp instance_methods.sort
     end
   end
 end
