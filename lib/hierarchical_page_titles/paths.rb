@@ -1,6 +1,6 @@
 
 module HierarchicalPageTitles
-  LIBPATH = ::File.expand_path('../', __FILE__) + ::File::SEPARATOR
+  LIBPATH = ::File.expand_path('../..', __FILE__) + ::File::SEPARATOR
   PATH = ::File.dirname(LIBPATH) + ::File::SEPARATOR
 
   # Returns the library path for the module. If any arguments are given, they

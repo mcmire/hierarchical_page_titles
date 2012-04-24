@@ -1,11 +1,11 @@
 
+require 'rails/railtie'
+require 'active_support/lazy_load_hooks'
 require_relative '../hierarchical_page_titles'
 
 module HierarchicalPageTitles
-  libpath {
-    require 'hierarchical_page_titles/controller_helpers'
-    require 'hierarchical_page_titles/view_helpers'
-  }
+  require libpath('hierarchical_page_titles/controller_helpers')
+  require libpath('hierarchical_page_titles/view_helpers')
 
   class Railtie < Rails::Railtie
     ActiveSupport.on_load(:action_controller) do
@@ -14,7 +14,6 @@ module HierarchicalPageTitles
 
     ActiveSupport.on_load(:action_view) do
       include HierarchicalPageTitles::ViewHelpers
-      # pp instance_methods.sort
     end
   end
 end

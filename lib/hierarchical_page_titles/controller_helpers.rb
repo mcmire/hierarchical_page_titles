@@ -1,3 +1,6 @@
+
+require 'active_support/concern'
+
 module HierarchicalPageTitles
   module ControllerHelpers
     extend ActiveSupport::Concern
