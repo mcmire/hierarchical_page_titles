@@ -17,5 +17,11 @@ module HierarchicalPageTitles
         include HierarchicalPageTitles::ViewHelpers
       end
     end
+
+    def self.run_initializers(*args)
+      return if @initialized
+      super
+      @initialized = true
+    end
   end
 end
