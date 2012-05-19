@@ -1,6 +1,4 @@
 
-require 'active_support/concern'
-
 module HierarchicalPageTitles
   module ViewHelpers
     # Public: Append a string to the list of window titles for the view.
